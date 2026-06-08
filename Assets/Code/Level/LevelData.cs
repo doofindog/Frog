@@ -5,4 +5,5 @@ public class LevelData : ScriptableObject
 {
     public GameObject[] customerPrefabs;
     public GameObject dropZoneLayoutPrefab;
+    public RuleData[] rules;
 }

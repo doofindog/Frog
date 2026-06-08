@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DropZone : MonoBehaviour
 {
+    public TileType tileType = TileType.None;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color hoverTint = new Color(1f, 1f, 0.4f, 1f);
     [SerializeField] private Color occupiedTint = new Color(0.6f, 1f, 0.6f, 1f);

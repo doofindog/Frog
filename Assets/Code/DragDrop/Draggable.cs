@@ -4,6 +4,7 @@ using DG.Tweening;
 [RequireComponent(typeof(Collider2D))]
 public class Draggable : MonoBehaviour
 {
+    public string frogName;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int draggingSortOrder = 100;
     [SerializeField] private float followSpeed = 15f;

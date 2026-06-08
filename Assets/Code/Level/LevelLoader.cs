@@ -5,6 +5,7 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private LevelSequence sequence;
     [SerializeField] private CustomerQueue queue;
+    [SerializeField] private RuleBook rules;
     [SerializeField] private Transform customerParent;
     [SerializeField] private Transform dropZoneParent;
 
@@ -34,6 +35,7 @@ public class LevelLoader : MonoBehaviour
         var data = sequence.levels[index];
         SpawnLayout(data);
         SpawnCustomers(data);
+        LoadRules(data);
     }
 
     private void SpawnLayout(LevelData data)
@@ -52,6 +54,18 @@ public class LevelLoader : MonoBehaviour
         }
 
         queue.Populate(_spawnedCustomers);
+    }
+
+    private void LoadRules(LevelData data)
+    {
+        rules ??= FindAnyObjectByType<RuleBook>();
+        if (!rules)
+        {
+            Debug.LogError("No RuleBook found in scene!");
+            return;
+        }
+        
+        rules.LoadRules(data.rules);
     }
 
     private void ClearLevel()
