@@ -23,3 +23,13 @@ MonoBehaviour:
     trueVerb: 0
     objectType: 1
     objectName: Sun
+  - subjectFrogName: Tom
+    statedVerb: 1
+    trueVerb: 1
+    objectType: 1
+    objectName: Water
+  - subjectFrogName: Tom
+    statedVerb: 1
+    trueVerb: 1
+    objectType: 0
+    objectName: Fred
