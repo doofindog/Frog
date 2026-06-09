@@ -32,6 +32,15 @@ public class DropZoneGrid : MonoBehaviour
         return null;
     }
 
+    public string GetOccupantNames()
+    {
+        var names = new System.Collections.Generic.List<string>();
+        foreach (var (coord, zone) in _grid)
+            if (zone.OccupantFrogName != null)
+                names.Add($"'{zone.OccupantFrogName}' at {coord}");
+        return names.Count > 0 ? string.Join(", ", names) : "none";
+    }
+
     public bool AreFrogsAdjacent(string a, string b)
     {
         var posA = FindFrog(a);

@@ -49,7 +49,18 @@ public class WinLoseEvaluator : MonoBehaviour
 
             if (rule.objectType == RuleObjectType.Frog)
             {
-                bool adjacent = grid.AreFrogsAdjacent(rule.subjectFrogName, rule.objectName);
+                var posA = grid.FindFrog(rule.subjectFrogName);
+                var posB = grid.FindFrog(rule.objectName);
+
+                if (posA == null || posB == null)
+                {
+                    string found = grid.GetOccupantNames();
+                    Debug.LogWarning($"[WinLose] Frog not found on '{grid.name}' — looking for '{rule.subjectFrogName}' and '{rule.objectName}', grid has: [{found}]");
+                    failReason = $"Frog not found: {rule.subjectFrogName} or {rule.objectName}";
+                    return false;
+                }
+
+                bool adjacent = (posA.Value - posB.Value).sqrMagnitude == 1;
                 bool satisfied = rule.trueVerb == RuleVerb.Loves ? adjacent : !adjacent;
                 if (!satisfied)
                 {
@@ -66,7 +77,13 @@ public class WinLoseEvaluator : MonoBehaviour
                 }
 
                 Vector2Int? coord = grid.FindFrog(rule.subjectFrogName);
-                if (coord == null) continue;
+                if (coord == null)
+                {
+                    string found = grid.GetOccupantNames();
+                    Debug.LogWarning($"[WinLose] Frog '{rule.subjectFrogName}' not found on '{grid.name}', grid has: [{found}]");
+                    failReason = $"Frog not found: {rule.subjectFrogName}";
+                    return false;
+                }
 
                 TileType actual = grid.GetZone(coord.Value).tileType;
                 bool satisfied = rule.trueVerb == RuleVerb.Loves ? actual == target : actual != target;
