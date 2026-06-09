@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64947901c317d0948bc6f1a88e2129b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable
+  frogName: Fred
   spriteRenderer: {fileID: 8340853469752550285}
   draggingSortOrder: 100
   followSpeed: 15

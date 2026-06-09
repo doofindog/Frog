@@ -8,6 +8,8 @@ public class CustomerQueue : MonoBehaviour
 
     private readonly List<Draggable> _customers = new List<Draggable>();
 
+    public int Count => _customers.Count;
+
     public void Populate(IEnumerable<Draggable> customers)
     {
         _customers.Clear();

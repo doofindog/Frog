@@ -12,6 +12,7 @@ public class DropZone : MonoBehaviour
     private Draggable _occupant;
 
     public bool IsOccupied => _occupant != null;
+    public string OccupantFrogName => _occupant?.frogName;
 
     private void Awake()
     {
