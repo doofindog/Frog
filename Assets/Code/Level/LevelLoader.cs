@@ -34,6 +34,7 @@ public class LevelLoader : MonoBehaviour
 
         var data = sequence.levels[index];
         SpawnLayout(data);
+        FindAnyObjectByType<DropZoneGrid>()?.Build();
         SpawnCustomers(data);
         LoadRules(data);
     }

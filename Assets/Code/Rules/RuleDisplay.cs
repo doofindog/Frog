@@ -48,6 +48,7 @@ public class RuleDisplay : MonoBehaviour
     {
         RuleVerb.Loves => "LOVES",
         RuleVerb.Hates => "HATES",
+        RuleVerb.Likes => "LIKES",
         _ => verb.ToString().ToUpper()
     };
 }

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7393754677949848445}
+  - component: {fileID: 8697038547754579527}
   m_Layer: 0
   m_Name: Level_1_DropZone
   m_TagString: Untagged
@@ -34,6 +35,18 @@ Transform:
   - {fileID: 5966832397818127301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8697038547754579527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065236647449301241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5916c9c3f345bd41aef6d3b84bca600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LilyPadGrid
 --- !u!1001 &1355212622814332234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,6 +55,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7393754677949848445}
     m_Modifications:
+    - target: {fileID: 391314556127631483, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: m_Color.g
+      value: 0.22745098
+      objectReference: {fileID: 0}
     - target: {fileID: 4611928737829922447, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -98,6 +115,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropZone (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: tileType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: gridCoord.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -116,6 +141,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7393754677949848445}
     m_Modifications:
+    - target: {fileID: 391314556127631483, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 391314556127631483, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: m_Color.g
+      value: 0.22740006
+      objectReference: {fileID: 0}
+    - target: {fileID: 391314556127631483, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4611928737829922447, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -172,6 +209,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropZone (0)
       objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: tileType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: gridCoord.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: occupiedTint.b
+      value: 0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: occupiedTint.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: occupiedTint.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -190,6 +247,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7393754677949848445}
     m_Modifications:
+    - target: {fileID: 391314556127631483, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 391314556127631483, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6632111
+      objectReference: {fileID: 0}
+    - target: {fileID: 391314556127631483, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4611928737829922447, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -245,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 6208775948730490312, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: m_Name
       value: DropZone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
+      propertyPath: tileType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

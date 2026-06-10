@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DropZone : MonoBehaviour
 {
+    public Vector2Int gridCoord;
     public TileType tileType = TileType.None;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color hoverTint = new Color(1f, 1f, 0.4f, 1f);
@@ -12,6 +13,8 @@ public class DropZone : MonoBehaviour
     private Draggable _occupant;
 
     public bool IsOccupied => _occupant != null;
+    public string OccupantFrogName => _occupant?.frogName;
+    [SerializeField] private string frog;
 
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class DropZone : MonoBehaviour
         if (spriteRenderer != null)
             spriteRenderer.color = occupiedTint;
 
+        frog = draggable.frogName;
         return true;
     }
 

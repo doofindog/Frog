@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum RuleVerb { Loves, Hates }
+public enum RuleVerb { Loves, Hates, Likes }
 public enum RuleObjectType { Frog, Tile }
 public enum TileType { None, Water, Sun, Shade }
 

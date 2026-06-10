@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class DragManager : MonoBehaviour
 {
+    public static event System.Action OnFrogPlaced;
+
     [SerializeField] private LayerMask draggableLayer;
     [SerializeField] private LayerMask dropZoneLayer;
     [SerializeField] private CustomerQueue queue;
@@ -70,6 +72,8 @@ public class DragManager : MonoBehaviour
 
         if (!accepted)
             queue.AddToEnd(_dragging);
+        else
+            OnFrogPlaced?.Invoke();
 
         _dragging = null;
     }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   customerPrefabs:
   - {fileID: 6863103084244101862, guid: d0275e4fd84331146a95f3652047be80, type: 3}
-  - {fileID: 6863103084244101862, guid: d0275e4fd84331146a95f3652047be80, type: 3}
-  - {fileID: 6863103084244101862, guid: d0275e4fd84331146a95f3652047be80, type: 3}
+  - {fileID: 6863103084244101862, guid: af1f8cb51f6b9bd4095f250a80df9acd, type: 3}
+  - {fileID: 6863103084244101862, guid: c9fdef3ce8d930443a8e0ecc4e31e0aa, type: 3}
   dropZoneLayoutPrefab: {fileID: 3065236647449301241, guid: b93f7a75e3d676a47b5416ae6d0c03ec, type: 3}
   rules:
   - subjectFrogName: Fred
@@ -23,3 +23,13 @@ MonoBehaviour:
     trueVerb: 0
     objectType: 1
     objectName: Sun
+  - subjectFrogName: Tom
+    statedVerb: 1
+    trueVerb: 1
+    objectType: 1
+    objectName: Water
+  - subjectFrogName: Tom
+    statedVerb: 1
+    trueVerb: 1
+    objectType: 0
+    objectName: Fred
