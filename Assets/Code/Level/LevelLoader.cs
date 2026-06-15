@@ -16,6 +16,7 @@ public class LevelLoader : MonoBehaviour
     public int CurrentIndex => _currentIndex;
     public int LevelCount => sequence != null ? sequence.levels.Length : 0;
     public bool HasNextLevel => _currentIndex < LevelCount - 1;
+    public LevelData CurrentLevel => _currentIndex >= 0 ? sequence.levels[_currentIndex] : null;
 
     private void Start() => LoadLevel(0);
 
@@ -66,7 +67,7 @@ public class LevelLoader : MonoBehaviour
             return;
         }
         
-        rules.LoadRules(data.rules);
+        rules.LoadRules(data.sentences, data.wordBank);
     }
 
     private void ClearLevel()
