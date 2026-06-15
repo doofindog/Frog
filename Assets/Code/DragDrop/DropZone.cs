@@ -68,7 +68,9 @@ public class DropZone : MonoBehaviour
     {
         if (ruleBook == null || draggable == null) return false;
         var constraint = ruleBook.GetConstraintForFrog(draggable.frogName);
-        if (constraint == null || constraint.objectType != RuleObjectType.Tile) return false;
+        if (constraint == null) return false;
+        if (constraint.blockedEverywhere) return true;
+        if (constraint.objectType != RuleObjectType.Tile) return false;
         return !constraint.IsSatisfiedBy(tileType);
     }
 }

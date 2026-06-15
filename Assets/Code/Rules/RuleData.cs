@@ -25,6 +25,7 @@ public class SentenceData
 // Runtime constraint derived from a player-built sentence.
 public class RuleConstraint
 {
+    public bool blockedEverywhere;
     public string subjectFrog;
     public RuleVerb verb;
     public RuleObjectType objectType;
@@ -32,6 +33,7 @@ public class RuleConstraint
 
     public bool IsSatisfiedBy(TileType tileType)
     {
+        if (blockedEverywhere) return false;
         if (verb == RuleVerb.Likes) return true;
 
         foreach (var name in objectNames)
