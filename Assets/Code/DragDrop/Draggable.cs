@@ -5,6 +5,10 @@ using DG.Tweening;
 public class Draggable : MonoBehaviour
 {
     public string frogName;
+
+    public event System.Action DragStarted;
+    public event System.Action DragEnded;
+
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int draggingSortOrder = 100;
     [SerializeField] private float followSpeed = 15f;
@@ -46,6 +50,8 @@ public class Draggable : MonoBehaviour
 
         transform.DOKill();
         transform.DOScale(1.1f, 0.12f).SetEase(Ease.OutBack);
+
+        DragStarted?.Invoke();
     }
 
     public void Drag(Vector3 worldPosition) => _dragTarget = worldPosition;
@@ -58,5 +64,7 @@ public class Draggable : MonoBehaviour
         transform.DOKill();
         transform.DOScale(1f, 0.1f);
         transform.DORotate(Vector3.zero, 0.25f).SetEase(Ease.OutQuad);
+
+        DragEnded?.Invoke();
     }
 }
