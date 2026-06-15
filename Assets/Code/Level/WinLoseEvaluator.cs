@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class WinLoseEvaluator : MonoBehaviour
 {
     [SerializeField] private CustomerQueue queue;
-    [SerializeField] private RuleBook ruleBook;
     [SerializeField] private LevelLoader levelLoader;
     [SerializeField] private DropZoneGrid grid;
 
@@ -23,7 +21,7 @@ public class WinLoseEvaluator : MonoBehaviour
 
         grid ??= FindAnyObjectByType<DropZoneGrid>();
 
-        bool allSatisfied = EvaluateRules(out string failReason);
+        bool allSatisfied = EvaluateWinConditions(out string failReason);
 
         if (allSatisfied)
         {
@@ -39,57 +37,60 @@ public class WinLoseEvaluator : MonoBehaviour
         }
     }
 
-    private bool EvaluateRules(out string failReason)
+    private bool EvaluateWinConditions(out string failReason)
     {
-        foreach (var display in ruleBook.GetDisplays())
+        var level = levelLoader.CurrentLevel;
+        if (level == null || level.winConditions == null)
         {
-            RuleData rule = display.Data;
+            failReason = null;
+            return true;
+        }
 
-            if (rule.trueVerb == RuleVerb.Likes) continue;
+        foreach (var condition in level.winConditions)
+        {
+            if (condition.verb == RuleVerb.Likes) continue;
 
-            if (rule.objectType == RuleObjectType.Frog)
+            if (condition.objectType == RuleObjectType.Frog)
             {
-                var posA = grid.FindFrog(rule.subjectFrogName);
-                var posB = grid.FindFrog(rule.objectName);
+                var posA = grid.FindFrog(condition.subjectFrogName);
+                var posB = grid.FindFrog(condition.objectName);
 
                 if (posA == null || posB == null)
                 {
-                    string found = grid.GetOccupantNames();
-                    Debug.LogWarning($"[WinLose] Frog not found on '{grid.name}' — looking for '{rule.subjectFrogName}' and '{rule.objectName}', grid has: [{found}]");
-                    failReason = $"Frog not found: {rule.subjectFrogName} or {rule.objectName}";
+                    failReason = $"Frog not found: {condition.subjectFrogName} or {condition.objectName}";
+                    Debug.LogWarning($"[WinLose] {failReason} — grid has: [{grid.GetOccupantNames()}]");
                     return false;
                 }
 
                 bool adjacent = (posA.Value - posB.Value).sqrMagnitude == 1;
-                bool satisfied = rule.trueVerb == RuleVerb.Loves ? adjacent : !adjacent;
+                bool satisfied = condition.verb == RuleVerb.Loves ? adjacent : !adjacent;
                 if (!satisfied)
                 {
-                    failReason = $"{rule.subjectFrogName} {rule.trueVerb} {rule.objectName}";
+                    failReason = $"{condition.subjectFrogName} {condition.verb} {condition.objectName}";
                     return false;
                 }
             }
             else
             {
-                if (!Enum.TryParse<TileType>(rule.objectName, true, out TileType target))
+                if (!Enum.TryParse<TileType>(condition.objectName, true, out TileType target))
                 {
-                    Debug.LogWarning($"[WinLose] Unknown tile name '{rule.objectName}' in rule for {rule.subjectFrogName}");
+                    Debug.LogWarning($"[WinLose] Unknown tile '{condition.objectName}' for {condition.subjectFrogName}");
                     continue;
                 }
 
-                Vector2Int? coord = grid.FindFrog(rule.subjectFrogName);
+                Vector2Int? coord = grid.FindFrog(condition.subjectFrogName);
                 if (coord == null)
                 {
-                    string found = grid.GetOccupantNames();
-                    Debug.LogWarning($"[WinLose] Frog '{rule.subjectFrogName}' not found on '{grid.name}', grid has: [{found}]");
-                    failReason = $"Frog not found: {rule.subjectFrogName}";
+                    failReason = $"Frog not found: {condition.subjectFrogName}";
+                    Debug.LogWarning($"[WinLose] {failReason} — grid has: [{grid.GetOccupantNames()}]");
                     return false;
                 }
 
                 TileType actual = grid.GetZone(coord.Value).tileType;
-                bool satisfied = rule.trueVerb == RuleVerb.Loves ? actual == target : actual != target;
+                bool satisfied = condition.verb == RuleVerb.Loves ? actual == target : actual != target;
                 if (!satisfied)
                 {
-                    failReason = $"{rule.subjectFrogName} {rule.trueVerb} {target} (on {actual})";
+                    failReason = $"{condition.subjectFrogName} {condition.verb} {target} (on {actual})";
                     return false;
                 }
             }

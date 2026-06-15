@@ -8,6 +8,7 @@ public class DragManager : MonoBehaviour
     [SerializeField] private LayerMask draggableLayer;
     [SerializeField] private LayerMask dropZoneLayer;
     [SerializeField] private CustomerQueue queue;
+    [SerializeField] private RuleBook ruleBook;
 
     private Camera _camera;
     private Draggable _dragging;
@@ -58,12 +59,12 @@ public class DragManager : MonoBehaviour
 
         _hoveredDropZone?.OnDragExit();
         _hoveredDropZone = zone;
-        _hoveredDropZone?.OnDragEnter();
+        _hoveredDropZone?.OnDragEnter(_dragging, ruleBook);
     }
 
     private void EndDrag()
     {
-        bool accepted = _hoveredDropZone != null && _hoveredDropZone.TryAccept(_dragging);
+        bool accepted = _hoveredDropZone != null && _hoveredDropZone.TryAccept(_dragging, ruleBook);
 
         _hoveredDropZone?.OnDragExit();
         _hoveredDropZone = null;
