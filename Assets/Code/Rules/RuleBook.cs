@@ -79,15 +79,14 @@ public class RuleBook : MonoBehaviour
 
     public RuleConstraint GetConstraintForFrog(string frogName)
     {
+        if (_displays.Count == 0) return null;
+
         foreach (var display in _displays)
-        {
             foreach (var constraint in display.GetCurrentConstraints())
-            {
                 if (string.Equals(constraint.subjectFrog, frogName, StringComparison.OrdinalIgnoreCase))
                     return constraint;
-            }
-        }
-        return null;
+
+        return new RuleConstraint { blockedEverywhere = true };
     }
 
     private Camera GetUICamera()
