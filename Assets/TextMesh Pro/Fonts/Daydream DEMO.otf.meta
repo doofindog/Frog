@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cce2c009d4922a54b92d301b9a99cafe
+guid: 8410861a87bb60742ba9a8c397fd2b3f
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - VT323
+  - Daydream
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
