@@ -8,10 +8,11 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private RuleBook rules;
     [SerializeField] private Transform customerParent;
     [SerializeField] private Transform dropZoneParent;
+    [SerializeField] private CustomerMoodController moodController;
 
     private int _currentIndex = -1;
     private readonly List<Draggable> _spawnedCustomers = new();
-    private GameObject _spawnedLayout;
+    private DropZoneGrid _spawnedLayout;
 
     public int CurrentIndex => _currentIndex;
     public int LevelCount => sequence != null ? sequence.levels.Length : 0;
@@ -42,16 +43,19 @@ public class LevelLoader : MonoBehaviour
         _currentIndex = index;
 
         var data = sequence.levels[index];
-        SpawnLayout(data);
-        FindAnyObjectByType<DropZoneGrid>()?.Build();
+        var dropZoneGrid = SpawnLayout(data);
+        dropZoneGrid.Build();
         SpawnCustomers(data);
         LoadRules(data);
+        
+        moodController.Initialize(dropZoneGrid);
     }
 
-    private void SpawnLayout(LevelData data)
+    private DropZoneGrid SpawnLayout(LevelData data)
     {
         var parent = dropZoneParent != null ? dropZoneParent : transform;
         _spawnedLayout = Instantiate(data.dropZoneLayoutPrefab, parent);
+        return _spawnedLayout;
     }
 
     private void SpawnCustomers(LevelData data)
