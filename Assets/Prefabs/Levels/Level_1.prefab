@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7393754677949848445}
   - component: {fileID: 8697038547754579527}
   m_Layer: 0
-  m_Name: Level_1_DropZone
+  m_Name: Level_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
