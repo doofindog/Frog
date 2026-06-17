@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 4168987437648531585}
   - component: {fileID: 5723607827195677367}
   - component: {fileID: 1106969108289190000}
+  - component: {fileID: 5767456245533258697}
   m_Layer: 6
   m_Name: Customer Fred
   m_TagString: Untagged
@@ -216,3 +217,18 @@ MonoBehaviour:
   neutral: {fileID: -3061166110751212725, guid: de79d61d11543084985c0e05829f38f7, type: 3}
   happy: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   unhappy: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &5767456245533258697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863103084244101862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047d47621f295204ca3585346dcc390e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawnScale
+  target: {fileID: 3033883824019575851}
+  duration: 0.5
+  ease: 27

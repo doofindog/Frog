@@ -9,6 +9,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private Transform customerParent;
     [SerializeField] private Transform dropZoneParent;
     [SerializeField] private CustomerMoodController moodController;
+    [SerializeField] private float spawnStagger = 0.1f;
 
     private int _currentIndex = -1;
     private readonly List<Draggable> _spawnedCustomers = new();
@@ -68,6 +69,10 @@ public class LevelLoader : MonoBehaviour
         }
 
         queue.Populate(_spawnedCustomers);
+
+        for (int i = 0; i < _spawnedCustomers.Count; i++)
+            if (_spawnedCustomers[i].TryGetComponent<CustomerSpawnScale>(out var spawnScale))
+                spawnScale.Play(i * spawnStagger);
     }
 
     private void LoadRules(LevelData data)
