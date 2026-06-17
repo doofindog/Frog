@@ -27,8 +27,6 @@ public class WinLoseEvaluator : MonoBehaviour
         {
             Debug.Log("[WinLose] Win");
             onWin.Invoke();
-            if (levelLoader.HasNextLevel)
-                levelLoader.LoadNextLevel();
         }
         else
         {

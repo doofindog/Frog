@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de79d61d11543084985c0e05829f38f7
+guid: 2d44e39960095bb4c87adea4cc51e618
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3061166110751212725
-    second: frogs_frog_0
+      213: -5551218525453416950
+    second: frogs_sad-bubble_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,23 +126,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frogs_frog_0
+      name: frogs_sad-bubble_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 31
-        height: 27
+        width: 15
+        height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4bb53a14ad8485d0800000000000000
-      internalID: -3061166110751212725
+      spriteID: a0608c7a92c16f2b0800000000000000
+      internalID: -5551218525453416950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogs_sad-bubble_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e73459d77803c374891d508682e01bf0
+      internalID: 1581327961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogs_sad-bubble_2
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 710831126bd6ca145b470c3d566e74e0
+      internalID: 792704441
       vertices: []
       indices: 
       edges: []
@@ -151,7 +195,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -159,9 +203,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":1.0},"gridSpriteSize":{"x":15.0,"y":13.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      frogs_frog_0: -3061166110751212725
+      frogs_sad-bubble_0: -5551218525453416950
+      frogs_sad-bubble_1: 1581327961
+      frogs_sad-bubble_2: 792704441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

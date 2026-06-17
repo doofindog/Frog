@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public GameObject[] customerPrefabs;
-    public GameObject dropZoneLayoutPrefab;
+    public DropZoneGrid dropZoneLayoutPrefab;
     public WinCondition[] winConditions;
     public SentenceData[] sentences;
     public string[] wordBank;
