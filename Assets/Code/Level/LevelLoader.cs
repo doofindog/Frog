@@ -23,10 +23,18 @@ public class LevelLoader : MonoBehaviour
     public void LoadNextLevel()
     {
         if (HasNextLevel)
-            LoadLevel(_currentIndex + 1);
+            GoToLevel(_currentIndex + 1);
     }
 
-    public void ReloadCurrentLevel() => LoadLevel(_currentIndex);
+    public void ReloadCurrentLevel() => GoToLevel(_currentIndex);
+
+    private void GoToLevel(int index)
+    {
+        if (LevelTransition.Instance != null)
+            LevelTransition.Instance.Play(() => LoadLevel(index));
+        else
+            LoadLevel(index);
+    }
 
     public void LoadLevel(int index)
     {

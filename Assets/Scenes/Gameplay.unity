@@ -846,6 +846,7 @@ MonoBehaviour:
   rules: {fileID: 1393176177}
   customerParent: {fileID: 608057538}
   dropZoneParent: {fileID: 1087262116}
+  transition: {fileID: 0}
 --- !u!4 &1856758958
 Transform:
   m_ObjectHideFlags: 0
