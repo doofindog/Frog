@@ -765,7 +765,19 @@ MonoBehaviour:
   grid: {fileID: 0}
   onWin:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1806835283}
+        m_TargetAssemblyTypeName: LevelClearedPopup, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onLose:
     m_PersistentCalls:
       m_Calls: []
@@ -1016,6 +1028,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1806835283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4184912190842888110, guid: f7e1048e7ffe5fe43a178cd02adcaf18, type: 3}
+  m_PrefabInstance: {fileID: 506009625}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb9a11a96573fb45b280a1ee3484a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelClearedPopup
 --- !u!1 &1856758956
 GameObject:
   m_ObjectHideFlags: 0
