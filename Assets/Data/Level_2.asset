@@ -10,20 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3ac990b34e3ee43a1de48f5e11b6ea, type: 3}
-  m_Name: Level_1
+  m_Name: Level_2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   customerPrefabs:
+  - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
+  - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
+  - {fileID: 6863103084244101862, guid: ddc739ed4b1bbe741b2f56bae3d591c3, type: 3}
   - {fileID: 6863103084244101862, guid: e793a28ede14afd499c21c73dbf8725c, type: 3}
-  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: b93f7a75e3d676a47b5416ae6d0c03ec, type: 3}
-  winConditions:
-  - subjectFrogName: Fred
-    verb: 0
-    objectType: 1
-    objectName: sun
+  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: 607078c5e0a0d2748a643d61e51e2766, type: 3}
+  winConditions: []
   sentences:
   - defaultSentence:
+    - Kevin
+    - hates
+    - pink frogs
+  - defaultSentence:
+    - Kevin
+    - Likes
     - Fred
-    - loves
-    - water
-  wordBank:
-  - sun
+  wordBank: []

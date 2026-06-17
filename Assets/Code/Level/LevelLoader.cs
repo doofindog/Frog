@@ -93,11 +93,12 @@ public class LevelLoader : MonoBehaviour
         {
             Destroy(customer.gameObject);
         }
+        
         _spawnedCustomers.Clear();
 
         if (_spawnedLayout != null)
         {
-            Destroy(_spawnedLayout);
+            Destroy(_spawnedLayout.gameObject);
         }
         _spawnedLayout = null;
     }
