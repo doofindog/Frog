@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class DragManager : MonoBehaviour
 {
     public static event System.Action OnFrogPlaced;
+    public static event System.Action OnBoardChanged;
 
     [SerializeField] private LayerMask draggableLayer;
     [SerializeField] private LayerMask dropZoneLayer;
@@ -48,6 +49,7 @@ public class DragManager : MonoBehaviour
         queue.TryRemove(_dragging);
 
         _dragging.BeginDrag();
+        OnBoardChanged?.Invoke();
     }
 
     private void UpdateHoveredZone(Vector3 worldPos)
@@ -77,6 +79,7 @@ public class DragManager : MonoBehaviour
             OnFrogPlaced?.Invoke();
 
         _dragging = null;
+        OnBoardChanged?.Invoke();
     }
 
     private Vector3 ScreenToWorld(Vector2 screenPos)
