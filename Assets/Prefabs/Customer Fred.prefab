@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerHoverFeedback
   graphic: {fileID: 7742819333822504564}
-  hoverScale: 1.1
+  hoverScale: 1.5
   scaleDuration: 0.2
   punchAngle: 12
   punchDuration: 0.3
