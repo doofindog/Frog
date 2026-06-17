@@ -97,8 +97,8 @@ CanvasGroup:
   m_GameObject: {fileID: 3046737999022173340}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &7517201785980853332
 MonoBehaviour:
@@ -115,10 +115,13 @@ MonoBehaviour:
   maskGraphic: {fileID: 5545927661447611045}
   revealedScale: 15
   coveredScale: 0
-  spinAngle: 0
-  coverDuration: 0.45
-  revealDuration: 0.45
-  holdDuration: 0.1
+  settleScale: 1
+  settleDuration: 0.75
+  settleHold: 0
+  coverDuration: 1
+  holdDuration: 1
+  revealDuration: 2
+  settleEase: 21
 --- !u!1 &4567248363522919929
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8456361243947624360
 CanvasRenderer:
@@ -242,7 +245,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10000, y: 10000}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2599639764635490082
 CanvasRenderer:
