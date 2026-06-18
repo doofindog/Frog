@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -5,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip dragStartClip;
     [SerializeField] private AudioClip frogPlacedClip;
+    [SerializeField] private AudioClip happyFrogClip;
     [SerializeField] private AudioClip levelClearedClip;
     [SerializeField] private AudioClip ruleDragClip;
     [SerializeField] private AudioClip ruleDropClip;
@@ -40,7 +42,11 @@ public class AudioManager : MonoBehaviour
 
     private void PlayFrogDropped() => Play(frogDroppedClip);
 
-    private void PlayLevelCleared() => Play(levelClearedClip);
+    private void PlayLevelCleared()
+    {
+        Play(happyFrogClip);
+        DOVirtual.DelayedCall(1f, () => Play(levelClearedClip));
+    }
 
     private void PlayRuleDrag() => Play(ruleDragClip);
 

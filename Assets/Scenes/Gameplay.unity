@@ -1258,12 +1258,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad089d35aef89dc4a881e2084cd5c20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  dragStartClip: {fileID: 8300000, guid: dc1826a5a2dc00546a446538719facdf, type: 3}
-  frogPlacedClip: {fileID: 8300000, guid: d5fa6b1e4d4004d479e3e3f59671faae, type: 3}
-  levelClearedClip: {fileID: 8300000, guid: 78747760c0eafd4449f34852695291c1, type: 3}
-  ruleDragClip: {fileID: 8300000, guid: 8ca2bc965b9d94249befd57697a9ed15, type: 3}
-  ruleDropClip: {fileID: 8300000, guid: 8ca2bc965b9d94249befd57697a9ed15, type: 3}
-  frogDroppedClip: {fileID: 8300000, guid: d5fa6b1e4d4004d479e3e3f59671faae, type: 3}
+  dragStartClip: {fileID: 8300000, guid: a29500987d172c54db828e4a015ae656, type: 3}
+  frogPlacedClip: {fileID: 8300000, guid: 0130b503741d5f5449e51f5911c84bb0, type: 3}
+  happyFrogClip: {fileID: 8300000, guid: d5c110cb601cf7741a468ae48c66fddd, type: 3}
+  levelClearedClip: {fileID: 8300000, guid: 1d4563748e2785b4190e48e87ce48a77, type: 3}
+  ruleDragClip: {fileID: 8300000, guid: ef8e5b354b4395345bd17fe269d54caf, type: 3}
+  ruleDropClip: {fileID: 8300000, guid: 253faf0ac99c5f5478248e20c2d5927f, type: 3}
+  frogDroppedClip: {fileID: 8300000, guid: 312d87b063cb65c4d9320a6582c6916c, type: 3}
 --- !u!82 &1694075383
 AudioSource:
   m_ObjectHideFlags: 0
