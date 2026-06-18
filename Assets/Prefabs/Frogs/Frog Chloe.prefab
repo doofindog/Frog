@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 92fae70091db88942820b9dacd213468, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b64dca00e9318ca48908ce898760a875, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 5244376708683848115}
   - component: {fileID: 5867438090121417215}
   m_Layer: 6
-  m_Name: Frog Kevin
+  m_Name: Frog Chloe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64947901c317d0948bc6f1a88e2129b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable
-  frogName: Kevin
+  frogName: Chloe
   locked: 0
   isNamed: 1
   spriteRenderer: {fileID: 8340853469752550285}
@@ -293,9 +293,9 @@ MonoBehaviour:
   frogGraphic: {fileID: 8340853469752550285}
   happyBubbleGraphic: {fileID: 3242064137058695456}
   unhappyBubbleGraphic: {fileID: 1291016519302279397}
-  neutral: {fileID: 21300000, guid: 92fae70091db88942820b9dacd213468, type: 3}
-  happy: {fileID: 21300000, guid: 72e23d65b2837d242b172c9575740780, type: 3}
-  unhappy: {fileID: 21300000, guid: 928caf05c8a814644936b1a9d17b4dfd, type: 3}
+  neutral: {fileID: 21300000, guid: b64dca00e9318ca48908ce898760a875, type: 3}
+  happy: {fileID: 21300000, guid: 46262fa1118708347831162e02bc962e, type: 3}
+  unhappy: {fileID: 21300000, guid: 8e51f1a3cd56af6449935f92d06ac412, type: 3}
   bubbleScaleDuration: 0.3
 --- !u!114 &5244376708683848115
 MonoBehaviour:
