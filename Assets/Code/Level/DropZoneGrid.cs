@@ -12,7 +12,13 @@ public class DropZoneGrid : MonoBehaviour
     {
         _grid = new Dictionary<Vector2Int, DropZone>();
         foreach (var zone in GetComponentsInChildren<DropZone>())
+        {
             _grid[zone.gridCoord] = zone;
+
+            var preset = zone.GetComponentInChildren<Draggable>();
+            if (preset != null)
+                zone.SetStaticOccupant(preset);
+        }
     }
 
     public DropZone GetZone(Vector2Int coord) =>

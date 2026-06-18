@@ -5,6 +5,8 @@ using DG.Tweening;
 public class Draggable : MonoBehaviour
 {
     public string frogName;
+    [SerializeField] private bool locked;
+    public bool IsLocked => locked;
 
     public event System.Action DragStarted;
     public event System.Action DragEnded;

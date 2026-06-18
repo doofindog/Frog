@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: LevelSequence
   m_EditorClassIdentifier: Assembly-CSharp::LevelSequence
   levels:
-  - {fileID: 11400000, guid: 582bb49f8b118b646857fa8677333d1a, type: 2}
-  - {fileID: 11400000, guid: 7ad67440430db2345b0a0ef9834a71b9, type: 2}
   - {fileID: 11400000, guid: 68b7ae2544fb84445887ac4792546fde, type: 2}
   - {fileID: 11400000, guid: 89ee342d226b7224b855c168070d389a, type: 2}
+  - {fileID: 11400000, guid: 7ad67440430db2345b0a0ef9834a71b9, type: 2}
+  - {fileID: 11400000, guid: 582bb49f8b118b646857fa8677333d1a, type: 2}
   - {fileID: 11400000, guid: 0d2f3a341e900374aad8cb19460daf6d, type: 2}
   - {fileID: 11400000, guid: 1f5c3c02a57db2b4aabe5540875f58fa, type: 2}
   - {fileID: 11400000, guid: 5cb3aa547fa561140aaa7b8edf129f9a, type: 2}

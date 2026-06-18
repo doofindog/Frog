@@ -55,6 +55,19 @@ public class DropZone : MonoBehaviour
         return true;
     }
 
+    // Registers a frog already parented under this zone in the level prefab as its occupant,
+    // without the repositioning/visual setup that drag-and-drop placement does.
+    public void SetStaticOccupant(Draggable occupant)
+    {
+        if (occupant == null) return;
+
+        _occupant = occupant;
+        if (spriteRenderer != null)
+            spriteRenderer.color = occupiedTint;
+
+        frog = occupant.frogName;
+    }
+
     public void Vacate()
     {
         _occupant = null;

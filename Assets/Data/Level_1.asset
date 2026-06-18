@@ -15,16 +15,14 @@ MonoBehaviour:
   customerPrefabs:
   - {fileID: 6863103084244101862, guid: e793a28ede14afd499c21c73dbf8725c, type: 3}
   dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: b93f7a75e3d676a47b5416ae6d0c03ec, type: 3}
-  winConditions:
-  - subjectFrogName: Fred
-    verb: 0
-    objectType: 1
-    objectName: sun
   sentences:
   - defaultSentence:
     - Fred
-    - loves
-    - water
-    draggableMask: 000001
-  wordBank:
-  - sun
+    - hates
+    - sun
+    draggableMask: 000100
+  - defaultSentence:
+    - 'Replace to change :'
+    - likes
+    draggableMask: 0001
+  wordBank: []

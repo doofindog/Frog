@@ -42,7 +42,7 @@ public class DragManager : MonoBehaviour
         if (hit == null) return;
 
         _dragging = hit.GetComponent<Draggable>();
-        if (_dragging == null) return;
+        if (_dragging == null || _dragging.IsLocked) { _dragging = null; return; }
 
         Physics2D.OverlapPoint(worldPos, dropZoneLayer)?.GetComponent<DropZone>()?.Vacate();
         queue.TryRemove(_dragging);
