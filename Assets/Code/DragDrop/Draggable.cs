@@ -7,6 +7,7 @@ public class Draggable : MonoBehaviour
     public string frogName;
     [SerializeField] private bool locked;
     public bool IsLocked => locked;
+    public void SetLocked(bool value) => locked = value;
 
     [SerializeField] private bool isNamed;
     public bool IsNamed => isNamed;

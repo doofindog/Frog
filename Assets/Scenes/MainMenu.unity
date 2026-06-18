@@ -1710,8 +1710,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Programming\n    doofindog\n    maukii\n\nArt\n    pumpkin_mallow\n\nAudio\n   
-    Lu"
+  m_text: "Programming\n    doofindog\n    maukii\n\nArt\n    pumpkin_mallow\n\nSound
+    effects\n    Lu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa9b083973448fa449e9187aee5ae743, type: 2}
   m_sharedMaterial: {fileID: 1587950171567653365, guid: fa9b083973448fa449e9187aee5ae743, type: 2}

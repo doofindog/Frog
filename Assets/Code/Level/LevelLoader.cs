@@ -24,6 +24,9 @@ public class LevelLoader : MonoBehaviour
 
     private void Start() => LoadLevel(0);
 
+    private void OnEnable() => WinLoseEvaluator.OnLevelCleared += LockCurrentFrogs;
+    private void OnDisable() => WinLoseEvaluator.OnLevelCleared -= LockCurrentFrogs;
+
     public void LoadNextLevel()
     {
         if (HasNextLevel)
@@ -32,7 +35,18 @@ public class LevelLoader : MonoBehaviour
             LevelTransition.Instance.LoadScene("End");
     }
 
-    public void ReloadCurrentLevel() => GoToLevel(_currentIndex);
+    public void ReloadCurrentLevel()
+    {
+        LockCurrentFrogs();
+        GoToLevel(_currentIndex);
+    }
+
+    private void LockCurrentFrogs()
+    {
+        foreach (var customer in _spawnedCustomers)
+            if (customer != null)
+                customer.SetLocked(true);
+    }
 
     private void GoToLevel(int index)
     {
