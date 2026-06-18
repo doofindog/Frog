@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 4168987437648531585}
   - component: {fileID: 559936193410813571}
   - component: {fileID: 1026432559937973365}
+  - component: {fileID: 8219064345601847734}
   m_Layer: 6
   m_Name: Blue Frog
   m_TagString: Untagged
@@ -178,6 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable
   frogName: Blue Frogs
+  locked: 0
+  isNamed: 0
   spriteRenderer: {fileID: 8340853469752550285}
   draggingSortOrder: 100
   followSpeed: 15
@@ -221,6 +224,21 @@ MonoBehaviour:
   punchAngle: 12
   punchDuration: 0.3
   punchVibrato: 6
+--- !u!114 &8219064345601847734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863103084244101862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047d47621f295204ca3585346dcc390e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawnScale
+  target: {fileID: 7742819333822504564}
+  duration: 0.35
+  ease: 27
 --- !u!1 &8814275279638192625
 GameObject:
   m_ObjectHideFlags: 0

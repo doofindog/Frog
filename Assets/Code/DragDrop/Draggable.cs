@@ -8,6 +8,9 @@ public class Draggable : MonoBehaviour
     [SerializeField] private bool locked;
     public bool IsLocked => locked;
 
+    [SerializeField] private bool isNamed;
+    public bool IsNamed => isNamed;
+
     public event System.Action DragStarted;
     public event System.Action DragEnded;
 

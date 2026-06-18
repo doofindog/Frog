@@ -9,6 +9,8 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private Transform customerParent;
     [SerializeField] private Transform dropZoneParent;
     [SerializeField] private CustomerMoodController moodController;
+    [SerializeField] private Transform namedFrogInfoParent;
+    [SerializeField] private NamedFrogInfo namedFrogInfoPrefab;
     [SerializeField] private float spawnStagger = 0.1f;
 
     private int _currentIndex = -1;
@@ -26,6 +28,8 @@ public class LevelLoader : MonoBehaviour
     {
         if (HasNextLevel)
             GoToLevel(_currentIndex + 1);
+        else
+            LevelTransition.Instance.LoadScene("End");
     }
 
     public void ReloadCurrentLevel() => GoToLevel(_currentIndex);
@@ -48,6 +52,18 @@ public class LevelLoader : MonoBehaviour
         dropZoneGrid.Build();
         SpawnCustomers(data);
         LoadRules(data);
+
+        var spawnedNames = new HashSet<string>();
+        int namedCount = 0;
+        foreach (var customer in _spawnedCustomers)
+        {
+            if (!customer.IsNamed) continue;
+            if (!spawnedNames.Add(customer.frogName)) continue;
+
+            var info = Instantiate(namedFrogInfoPrefab, namedFrogInfoParent);
+            info.SetFrogInfo(customer.frogName, customer.GetComponentInChildren<SpriteRenderer>().sprite, namedCount * spawnStagger);
+            namedCount++;
+        }
         
         moodController.Initialize(dropZoneGrid);
     }
@@ -101,5 +117,10 @@ public class LevelLoader : MonoBehaviour
             Destroy(_spawnedLayout.gameObject);
         }
         _spawnedLayout = null;
+
+        foreach (Transform child in namedFrogInfoParent)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
