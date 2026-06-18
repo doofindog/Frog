@@ -5,6 +5,8 @@ public class DragManager : MonoBehaviour
 {
     public static event System.Action OnFrogPlaced;
     public static event System.Action OnBoardChanged;
+    public static event System.Action OnFrogPickedUp;
+    public static event System.Action OnFrogDropped;
 
     [SerializeField] private LayerMask draggableLayer;
     [SerializeField] private LayerMask dropZoneLayer;
@@ -48,6 +50,7 @@ public class DragManager : MonoBehaviour
         queue.TryRemove(_dragging);
 
         _dragging.BeginDrag();
+        OnFrogPickedUp?.Invoke();
         OnBoardChanged?.Invoke();
     }
 
@@ -73,7 +76,10 @@ public class DragManager : MonoBehaviour
         _dragging.EndDrag();
 
         if (!accepted)
+        {
             queue.AddToEnd(_dragging);
+            OnFrogDropped?.Invoke();
+        }
         else
             OnFrogPlaced?.Invoke();
 

@@ -8,6 +8,8 @@ public class WinLoseEvaluator : MonoBehaviour
     [SerializeField] private DropZoneGrid grid;
     [SerializeField] private RuleBook ruleBook;
 
+    public static event System.Action OnLevelCleared;
+
     [Space]
     public UnityEvent onWin;
     public UnityEvent onLose;
@@ -42,6 +44,7 @@ public class WinLoseEvaluator : MonoBehaviour
         if (allSatisfied)
         {
             Debug.Log("[WinLose] Win");
+            OnLevelCleared?.Invoke();
             onWin.Invoke();
         }
         else

@@ -12,6 +12,9 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     [SerializeField] private Color draggableTextColor = new Color(0.18f, 0.14f, 0.1f);
     [SerializeField] private UIHoverScalePunch hoverScalePunch;
 
+    public static event System.Action OnDragStarted;
+    public static event System.Action OnDropped;
+
     public string Text => label != null ? label.text : string.Empty;
     public bool Draggable => _draggable;
 
@@ -69,6 +72,8 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         _canvasGroup.alpha = 0.75f;
         _canvasGroup.blocksRaycasts = false;
+
+        OnDragStarted?.Invoke();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -87,6 +92,8 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
+
+        OnDropped?.Invoke();
 
         _ruleBook?.ClearHoverHighlight();
 

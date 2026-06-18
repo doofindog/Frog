@@ -55,13 +55,14 @@ public class LevelLoader : MonoBehaviour
 
         var spawnedNames = new HashSet<string>();
         int namedCount = 0;
-        foreach (var customer in _spawnedCustomers)
+        Draggable[] frogs = FindObjectsByType<Draggable>();
+        foreach (var frog in frogs)
         {
-            if (!customer.IsNamed) continue;
-            if (!spawnedNames.Add(customer.frogName)) continue;
+            if (!frog.IsNamed) continue;
+            if (!spawnedNames.Add(frog.frogName)) continue;
 
             var info = Instantiate(namedFrogInfoPrefab, namedFrogInfoParent);
-            info.SetFrogInfo(customer.frogName, customer.GetComponentInChildren<SpriteRenderer>().sprite, namedCount * spawnStagger);
+            info.SetFrogInfo(frog.frogName, frog.GetComponentInChildren<SpriteRenderer>().sprite, namedCount * spawnStagger);
             namedCount++;
         }
         

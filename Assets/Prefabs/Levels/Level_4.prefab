@@ -139,11 +139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -237,11 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -339,11 +339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -449,11 +449,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -547,11 +547,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -653,11 +653,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -759,11 +759,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -865,11 +865,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -963,11 +963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878448799552175137, guid: 37255f95c6a319242b0512d7e078e243, type: 3}
       propertyPath: gridCoord.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,7 +9,6 @@ public class RuleBook : MonoBehaviour
 
     [SerializeField] private RuleDisplay rulePrefab;
     [SerializeField] private Transform rulesContainer;
-    [SerializeField] private Transform bankContainer;
     [SerializeField] private WordToken wordTokenPrefab;
 
     private readonly List<RuleDisplay> _displays = new();
@@ -23,9 +22,6 @@ public class RuleBook : MonoBehaviour
             Destroy(display.gameObject);
         _displays.Clear();
 
-        foreach (Transform child in bankContainer)
-            Destroy(child.gameObject);
-
         if (sentences != null)
         {
             foreach (var sentence in sentences)
@@ -37,21 +33,8 @@ public class RuleBook : MonoBehaviour
                 LayoutRebuilder.ForceRebuildLayoutImmediate(display.GetComponent<RectTransform>());
             }
         }
-
-        
-        if (wordBank != null)
-        {
-            foreach (var word in wordBank)
-            {
-                var token = Instantiate(wordTokenPrefab, bankContainer);
-                token.Init(word, this);
-                
-                LayoutRebuilder.ForceRebuildLayoutImmediate(token.GetComponent<RectTransform>());
-            }
-        }
         
         LayoutRebuilder.ForceRebuildLayoutImmediate(rulesContainer.GetComponent<RectTransform>());
-        LayoutRebuilder.ForceRebuildLayoutImmediate(bankContainer.GetComponent<RectTransform>());
     }
 
     // Returns the WordToken under screenPos (across all sentence rows and the bank), or null.
@@ -89,15 +72,6 @@ public class RuleBook : MonoBehaviour
                     var token = child.GetComponent<WordToken>();
                     if (token != null && token.Draggable) return token;
                 }
-            }
-        }
-
-        foreach (Transform child in bankContainer)
-        {
-            if (RectTransformUtility.RectangleContainsScreenPoint((RectTransform)child, screenPos, cam))
-            {
-                var token = child.GetComponent<WordToken>();
-                if (token != null && token.Draggable) return token;
             }
         }
 
