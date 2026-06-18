@@ -7,23 +7,21 @@ public class RuleDisplay : MonoBehaviour
 {
     [SerializeField] private Transform sentenceContainer;
 
-    private RectTransform _gapIndicator;
-
     public Transform SentenceContainer => sentenceContainer;
 
     public void Setup(SentenceData data, WordToken tokenPrefab, RuleBook ruleBook)
     {
         foreach (Transform child in sentenceContainer) Destroy(child.gameObject);
 
-        CreateGapIndicator();
-
         if (data.defaultSentence != null)
         {
-            foreach (var word in data.defaultSentence)
+            for (int i = 0; i < data.defaultSentence.Length; i++)
             {
+                bool draggable = data.draggableMask != null && i < data.draggableMask.Length && data.draggableMask[i];
+
                 var token = Instantiate(tokenPrefab, sentenceContainer);
-                token.Init(word, ruleBook);
-                
+                token.Init(data.defaultSentence[i], ruleBook, draggable);
+
                 LayoutRebuilder.ForceRebuildLayoutImmediate(token.GetComponent<RectTransform>());
             }
         }
@@ -78,54 +76,11 @@ public class RuleDisplay : MonoBehaviour
         return result;
     }
 
-    public void UpdateGapIndicator(Vector2 screenPos)
-    {
-        if (_gapIndicator == null) return;
-
-        Camera cam = GetUICamera();
-        bool over = RectTransformUtility.RectangleContainsScreenPoint(
-            (RectTransform)sentenceContainer, screenPos, cam);
-
-        if (!over) { _gapIndicator.gameObject.SetActive(false); return; }
-
-        int index = GetInsertionIndex(screenPos);
-        _gapIndicator.gameObject.SetActive(true);
-        _gapIndicator.SetSiblingIndex(index);
-    }
-
-    public void HideGapIndicator()
-    {
-        if (_gapIndicator != null)
-            _gapIndicator.gameObject.SetActive(false);
-    }
-
-    public int GetInsertionIndex(Vector2 screenPos)
-    {
-        Camera cam = GetUICamera();
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            (RectTransform)sentenceContainer, screenPos, cam, out Vector2 localPos);
-
-        int index = 0;
-        int tokenIndex = 0;
-        foreach (Transform child in sentenceContainer)
-        {
-            if (_gapIndicator != null && child == _gapIndicator.transform) continue;
-
-            float midX = child.localPosition.x;
-            if (localPos.x > midX)
-                index = tokenIndex + 1;
-
-            tokenIndex++;
-        }
-        return index;
-    }
-
     private List<string> GetSentenceWords()
     {
         var words = new List<string>();
         foreach (Transform child in sentenceContainer)
         {
-            if (_gapIndicator != null && child == _gapIndicator.transform) continue;
             var token = child.GetComponent<WordToken>();
             if (token != null && !string.IsNullOrWhiteSpace(token.Text))
                 words.Add(token.Text.Trim());
@@ -142,25 +97,5 @@ public class RuleDisplay : MonoBehaviour
                 terms.Add(words[i]);
         }
         return terms;
-    }
-
-    private void CreateGapIndicator()
-    {
-        if (_gapIndicator != null) return;
-
-        var go = new GameObject("GapIndicator", typeof(RectTransform), typeof(Image));
-        _gapIndicator = go.GetComponent<RectTransform>();
-        _gapIndicator.SetParent(sentenceContainer, false);
-        _gapIndicator.sizeDelta = new Vector2(4f, 40f);
-        go.GetComponent<Image>().color = new Color(0.3f, 0.7f, 1f, 1f);
-        go.SetActive(false);
-    }
-
-    private Camera GetUICamera()
-    {
-        var canvas = GetComponentInParent<Canvas>();
-        if (canvas == null) return null;
-        var root = canvas.rootCanvas;
-        return root.renderMode == RenderMode.ScreenSpaceOverlay ? null : root.worldCamera;
     }
 }

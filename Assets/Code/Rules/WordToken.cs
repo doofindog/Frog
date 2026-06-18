@@ -1,17 +1,21 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private TMP_Text label;
-
+    [SerializeField] private Image bg;
+ 
     public string Text => label != null ? label.text : string.Empty;
+    public bool Draggable => _draggable;
 
     private CanvasGroup _canvasGroup;
     private Canvas _rootCanvas;
     private RuleBook _ruleBook;
+    private bool _draggable;
 
     private Transform _originParent;
     private int _originSiblingIndex;
@@ -21,14 +25,29 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void Init(string text, RuleBook ruleBook)
+    public void Init(string text, RuleBook ruleBook, bool draggable = true)
     {
         if (label != null) label.text = text;
         _ruleBook = ruleBook;
+        _draggable = draggable;
+
+        if (bg != null && !draggable)
+        {
+            var color = bg.color;
+            color.a = 0f;
+            bg.color = color;
+        }
+    }
+
+    public void SetHighlighted(bool on)
+    {
+        _canvasGroup.alpha = on ? 0.5f : 1f;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!_draggable) return;
+
         if (_rootCanvas == null)
             _rootCanvas = GetComponentInParent<Canvas>().rootCanvas;
 
@@ -44,53 +63,46 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!_draggable) return;
+
         var rt = (RectTransform)transform;
         rt.anchoredPosition += eventData.delta / _rootCanvas.scaleFactor;
 
-        _ruleBook?.UpdateGapIndicators(eventData.position);
+        _ruleBook?.UpdateHoverHighlight(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!_draggable) return;
+
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
 
-        _ruleBook?.HideAllGapIndicators();
+        _ruleBook?.ClearHoverHighlight();
 
         if (_ruleBook == null) { ReturnToOrigin(); return; }
 
-        Camera cam = GetUICamera();
+        WordToken targetToken = _ruleBook.GetTokenAt(eventData.position);
 
-        RuleDisplay targetDisplay = _ruleBook.GetDisplayAt(eventData.position);
+        if (targetToken != null && targetToken != this)
+        {
+            Transform targetParent = targetToken.transform.parent;
+            int targetIndex = targetToken.transform.GetSiblingIndex();
 
-        bool overBank = RectTransformUtility.RectangleContainsScreenPoint(
-            (RectTransform)_ruleBook.BankContainer, eventData.position, cam);
+            targetToken.transform.SetParent(_originParent, worldPositionStays: false);
+            targetToken.transform.SetSiblingIndex(_originSiblingIndex);
 
-        if (targetDisplay != null)
-        {
-            int index = targetDisplay.GetInsertionIndex(eventData.position);
-            transform.SetParent(targetDisplay.SentenceContainer, worldPositionStays: false);
-            transform.SetSiblingIndex(index);
+            transform.SetParent(targetParent, worldPositionStays: false);
+            transform.SetSiblingIndex(targetIndex);
+            return;
         }
-        else if (overBank)
-        {
-            transform.SetParent(_ruleBook.BankContainer, worldPositionStays: false);
-        }
-        else
-        {
-            ReturnToOrigin();
-        }
+
+        ReturnToOrigin();
     }
 
     private void ReturnToOrigin()
     {
         transform.SetParent(_originParent, worldPositionStays: false);
         transform.SetSiblingIndex(_originSiblingIndex);
-    }
-
-    private Camera GetUICamera()
-    {
-        if (_rootCanvas == null) return null;
-        return _rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _rootCanvas.worldCamera;
     }
 }

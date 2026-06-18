@@ -20,6 +20,9 @@ public class WinCondition
 public class SentenceData
 {
     public string[] defaultSentence;
+
+    // Index-aligned with defaultSentence. A word is draggable only if its entry here is true.
+    public bool[] draggableMask;
 }
 
 // Runtime constraint derived from a player-built sentence.
