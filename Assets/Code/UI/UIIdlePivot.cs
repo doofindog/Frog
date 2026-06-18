@@ -31,7 +31,7 @@ public class UIIdlePivot : MonoBehaviour
         float scaleAmt = randomize ? Random.Range(0f, scaleAmount) : scaleAmount;
         float scaleDur = randomize ? Random.Range(Mathf.Max(1f, scaleDuration - 1f), scaleDuration) : scaleDuration;
         float sway = randomize ? Random.Range(0f, swayAngle) : swayAngle;
-        float swayDur = randomize ? Random.Range(0f, swayDuration) : swayDuration;
+        float swayDur = randomize ? Random.Range(Mathf.Max(1f, swayDuration - 1f), swayDuration) : swayDuration;
 
         // Start from one extreme so the yoyo loop covers the full range symmetrically.
         transform.localScale = _baseScale * (1f - scaleAmt);

@@ -14,6 +14,10 @@ public class CustomerSpawnScale : MonoBehaviour
         if (target == null)
             target = transform;
 
+        if (TryGetComponent(out Draggable draggable))
+            if (draggable.IsLocked)
+                return;
+
         _baseScale = target.localScale;
         target.localScale = Vector3.zero;
     }
