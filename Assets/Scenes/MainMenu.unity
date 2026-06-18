@@ -1693,9 +1693,9 @@ GameObject:
   - component: {fileID: 1624448720}
   - component: {fileID: 1624448718}
   - component: {fileID: 1624448722}
-  - component: {fileID: 1624448721}
   - component: {fileID: 1624448723}
   - component: {fileID: 1624448724}
+  - component: {fileID: 1624448725}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1787,23 +1787,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624448716}
   m_CullTransparentMesh: 1
---- !u!114 &1624448721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624448716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f1705078655694bb3091891ba5244d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIHoverScalePunch
-  target: {fileID: 1301954605}
-  punch: 0.15
-  duration: 0.3
-  vibrato: 8
-  elasticity: 1
 --- !u!114 &1624448722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,6 +1834,23 @@ MonoBehaviour:
   duration: 0.3
   vibrato: 8
   elasticity: 1
+--- !u!114 &1624448725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624448716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3ad5fb5a23417468a0a30e52024471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIHoverScale
+  target: {fileID: 1301954605}
+  hoverScale: 1.1
+  duration: 0.2
+  enterEase: 27
+  exitEase: 6
 --- !u!1 &1627489415
 GameObject:
   m_ObjectHideFlags: 0
