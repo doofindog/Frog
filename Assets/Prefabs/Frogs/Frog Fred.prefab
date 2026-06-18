@@ -197,7 +197,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 61e857c02b9924942a9af7610d72d62c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47bbbeb19a151f04f9a0e45eed3ef426, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -316,9 +316,9 @@ MonoBehaviour:
   frogGraphic: {fileID: 8340853469752550285}
   happyBubbleGraphic: {fileID: 6120097592344641138}
   unhappyBubbleGraphic: {fileID: 8959983556121280583}
-  neutral: {fileID: 21300000, guid: 61e857c02b9924942a9af7610d72d62c, type: 3}
-  happy: {fileID: 21300000, guid: 60ac4026b5cd20542b1e6193314fd4c1, type: 3}
-  unhappy: {fileID: 21300000, guid: ba4d7031ea063cf45b224c85e5f21439, type: 3}
+  neutral: {fileID: 21300000, guid: 47bbbeb19a151f04f9a0e45eed3ef426, type: 3}
+  happy: {fileID: 21300000, guid: 718cef27877306e4aa428f0f97cba968, type: 3}
+  unhappy: {fileID: 21300000, guid: 4887aa3504f297649ac2044d53f74c5b, type: 3}
   bubbleScaleDuration: 0.3
 --- !u!114 &4186042006736840759
 MonoBehaviour:
