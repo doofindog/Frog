@@ -986,6 +986,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4168987437648531585, guid: e178f1cee0e15a34abfa4c1efaed7cc6, type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6863103084244101862, guid: e178f1cee0e15a34abfa4c1efaed7cc6, type: 3}
       propertyPath: m_Name
       value: Blue Frog
