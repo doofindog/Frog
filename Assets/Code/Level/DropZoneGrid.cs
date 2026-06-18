@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,27 +26,31 @@ public class DropZoneGrid : MonoBehaviour
                 yield return z;
     }
 
-    public Vector2Int? FindFrog(string frogName)
+    // All board coordinates occupied by a customer with this name. Multiple customers
+    // (e.g. a whole species like "Pink Frogs") can share the same name.
+    public IEnumerable<Vector2Int> FindFrogs(string frogName)
     {
         foreach (var (coord, zone) in _grid)
-            if (zone.OccupantFrogName == frogName) return coord;
+            if (string.Equals(zone.OccupantFrogName, frogName, StringComparison.OrdinalIgnoreCase))
+                yield return coord;
+    }
+
+    // The board coordinate of this exact customer instance, regardless of name collisions.
+    public Vector2Int? FindCoord(Draggable occupant)
+    {
+        foreach (var (coord, zone) in _grid)
+            if (zone.Occupant == occupant) return coord;
         return null;
     }
 
     public string GetOccupantNames()
     {
-        var names = new System.Collections.Generic.List<string>();
+        var names = new List<string>();
         foreach (var (coord, zone) in _grid)
             if (zone.OccupantFrogName != null)
                 names.Add($"'{zone.OccupantFrogName}' at {coord}");
         return names.Count > 0 ? string.Join(", ", names) : "none";
     }
 
-    public bool AreFrogsAdjacent(string a, string b)
-    {
-        var posA = FindFrog(a);
-        var posB = FindFrog(b);
-        if (posA == null || posB == null) return false;
-        return (posA.Value - posB.Value).sqrMagnitude == 1;
-    }
+    public static bool AreAdjacent(Vector2Int a, Vector2Int b) => (a - b).sqrMagnitude == 1;
 }

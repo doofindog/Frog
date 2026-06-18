@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class RuleBook : MonoBehaviour
 {
+    public static event Action OnRulesChanged;
+
     [SerializeField] private RuleDisplay rulePrefab;
     [SerializeField] private Transform rulesContainer;
     [SerializeField] private Transform bankContainer;
@@ -12,6 +14,8 @@ public class RuleBook : MonoBehaviour
 
     private readonly List<RuleDisplay> _displays = new();
     private WordToken _hoveredToken;
+
+    public void NotifyRulesChanged() => OnRulesChanged?.Invoke();
 
     public void LoadRules(SentenceData[] sentences, string[] wordBank)
     {
@@ -100,16 +104,12 @@ public class RuleBook : MonoBehaviour
         return null;
     }
 
-    public RuleConstraint GetConstraintForFrog(string frogName)
+    public List<RuleConstraint> GetAllConstraints()
     {
-        if (_displays.Count == 0) return null;
-
+        var result = new List<RuleConstraint>();
         foreach (var display in _displays)
-            foreach (var constraint in display.GetCurrentConstraints())
-                if (string.Equals(constraint.subjectFrog, frogName, StringComparison.OrdinalIgnoreCase))
-                    return constraint;
-
-        return new RuleConstraint { blockedEverywhere = true };
+            result.AddRange(display.GetCurrentConstraints());
+        return result;
     }
 
     private Camera GetUICamera()

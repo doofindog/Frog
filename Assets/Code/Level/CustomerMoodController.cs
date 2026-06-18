@@ -1,23 +1,24 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class CustomerMoodController : MonoBehaviour
 {
-    [SerializeField] private LevelLoader levelLoader;
-    
+    [SerializeField] private RuleBook ruleBook;
+
     private DropZoneGrid grid;
     private CustomerExpression[] expressions;
 
     private void Start()
     {
         DragManager.OnBoardChanged += Refresh;
-        // Refresh when rules change
+        RuleBook.OnRulesChanged += Refresh;
     }
 
     private void OnDestroy()
     {
         DragManager.OnBoardChanged -= Refresh;
-        // Unsubscribe when rules change
+        RuleBook.OnRulesChanged -= Refresh;
     }
 
     public void Initialize(DropZoneGrid dropZoneGrid)
@@ -31,56 +32,50 @@ public class CustomerMoodController : MonoBehaviour
     private void Refresh()
     {
         foreach (var expression in expressions)
-            expression.SetMood(EvaluateMood(expression.FrogName));
+            expression.SetMood(EvaluateMood(expression));
     }
 
-    private CustomerMood EvaluateMood(string frogName)
+    // Evaluated from this exact instance's own board coordinate, not just its (possibly
+    // shared, e.g. species-wide) name — otherwise every customer with the same name would
+    // show identical mood regardless of where each one actually sits.
+    private CustomerMood EvaluateMood(CustomerExpression expression)
     {
+        string frogName = expression.FrogName;
+        Vector2Int? coord = grid.FindCoord(expression.Draggable);
+
         // Not on the board yet
-        if (grid.FindFrog(frogName) == null)
+        if (coord == null)
             return CustomerMood.Neutral;
 
-        var level = levelLoader.CurrentLevel;
         bool anyPending = false;
-        foreach (var condition in level.winConditions)
+        foreach (var constraint in ruleBook.GetAllConstraints())
         {
-            if (!string.Equals(condition.subjectFrogName, frogName, StringComparison.OrdinalIgnoreCase))
-                continue;
-            if (condition.verb == RuleVerb.Likes)
+            if (!string.Equals(constraint.subjectFrog, frogName, StringComparison.OrdinalIgnoreCase))
                 continue;
 
-            if (condition.objectType == RuleObjectType.Frog)
+            if (constraint.objectType == RuleObjectType.Tile)
             {
-                var posA = grid.FindFrog(condition.subjectFrogName);
-                var posB = grid.FindFrog(condition.objectName);
-                if (posA == null || posB == null) 
-                { 
-                    anyPending = true; 
-                    continue; 
+                var zone = grid.GetZone(coord.Value);
+                if (zone == null)
+                {
+                    anyPending = true;
+                    continue;
                 }
 
-                bool adjacent = (posA.Value - posB.Value).sqrMagnitude == 1;
-                bool satisfied = condition.verb == RuleVerb.Loves ? adjacent : !adjacent;
-                if (!satisfied) 
+                if (!constraint.IsSatisfiedBy(zone.tileType))
                     return CustomerMood.Unhappy;
             }
             else
             {
-                if (!Enum.TryParse<TileType>(condition.objectName, true, out TileType target))
+                bool allKnown = constraint.objectNames.All(name => grid.FindFrogs(name).Any());
+                if (!allKnown)
+                {
+                    anyPending = true;
                     continue;
-
-                var coord = grid.FindFrog(condition.subjectFrogName);
-                var zone = coord != null ? grid.GetZone(coord.Value) : null;
-                if (zone == null) 
-                { 
-                    anyPending = true; 
-                    continue; 
                 }
 
-                bool satisfied = condition.verb == RuleVerb.Loves
-                    ? zone.tileType == target
-                    : zone.tileType != target;
-                if (!satisfied) 
+                bool satisfied = constraint.IsSatisfiedBy(name => grid.FindFrogs(name).Any(c => DropZoneGrid.AreAdjacent(coord.Value, c)));
+                if (!satisfied)
                     return CustomerMood.Unhappy;
             }
         }

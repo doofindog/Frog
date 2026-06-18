@@ -55,7 +55,7 @@ public class RuleDisplay : MonoBehaviour
         bool isTile = false;
         foreach (var obj in objects)
         {
-            if (Enum.TryParse<TileType>(obj, ignoreCase: true, out TileType t) && t != TileType.None)
+            if (TileTypeWords.TryParse(obj, out _))
             {
                 isTile = true;
                 break;

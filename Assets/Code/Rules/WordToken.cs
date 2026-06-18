@@ -94,6 +94,7 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
             transform.SetParent(targetParent, worldPositionStays: false);
             transform.SetSiblingIndex(targetIndex);
+            _ruleBook.NotifyRulesChanged();
             return;
         }
 

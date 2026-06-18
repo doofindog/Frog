@@ -8,13 +8,13 @@ public class DropZone : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color hoverTint = new Color(1f, 1f, 0.4f, 1f);
     [SerializeField] private Color occupiedTint = new Color(0.6f, 1f, 0.6f, 1f);
-    [SerializeField] private Color blockedTint = new Color(1f, 0.4f, 0.4f, 1f);
 
     private Color _defaultColor;
     private Draggable _occupant;
 
     public bool IsOccupied => _occupant != null;
     public string OccupantFrogName => _occupant?.frogName;
+    public Draggable Occupant => _occupant;
     [SerializeField] private string frog;
 
     private void Awake()
@@ -28,12 +28,11 @@ public class DropZone : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void OnDragEnter(Draggable draggable, RuleBook ruleBook)
+    public void OnDragEnter(Draggable draggable)
     {
         if (spriteRenderer == null || IsOccupied) return;
 
-        bool blocked = IsBlocked(draggable, ruleBook);
-        spriteRenderer.color = blocked ? blockedTint : hoverTint;
+        spriteRenderer.color = hoverTint;
     }
 
     public void OnDragExit()
@@ -42,10 +41,9 @@ public class DropZone : MonoBehaviour
         spriteRenderer.color = IsOccupied ? occupiedTint : _defaultColor;
     }
 
-    public bool TryAccept(Draggable draggable, RuleBook ruleBook)
+    public bool TryAccept(Draggable draggable)
     {
         if (IsOccupied) return false;
-        if (IsBlocked(draggable, ruleBook)) return false;
 
         _occupant = draggable;
         draggable.transform.position = transform.position;
@@ -62,15 +60,5 @@ public class DropZone : MonoBehaviour
         _occupant = null;
         if (spriteRenderer != null)
             spriteRenderer.color = _defaultColor;
-    }
-
-    private bool IsBlocked(Draggable draggable, RuleBook ruleBook)
-    {
-        if (ruleBook == null || draggable == null) return false;
-        var constraint = ruleBook.GetConstraintForFrog(draggable.frogName);
-        if (constraint == null) return false;
-        if (constraint.blockedEverywhere) return true;
-        if (constraint.objectType != RuleObjectType.Tile) return false;
-        return !constraint.IsSatisfiedBy(tileType);
     }
 }

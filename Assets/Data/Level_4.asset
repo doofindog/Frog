@@ -18,19 +18,21 @@ MonoBehaviour:
   - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
   - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
   - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
-  dropZoneLayoutPrefab: {fileID: 3065236647449301241, guid: acb210d666ea91f4c871970bdf0096fa, type: 3}
-  winConditions: []
+  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: acb210d666ea91f4c871970bdf0096fa, type: 3}
   sentences:
   - defaultSentence:
     - Kevin
     - likes
     - sunlight
+    draggableMask: 000100
   - defaultSentence:
     - Kevin
     - hates
-    - pink frogs
+    - Pink Frogs
+    draggableMask: 000101
   - defaultSentence:
-    - pink frogs
-    - love
+    - Pink Frogs
+    - loves
     - sunlight
+    draggableMask: 000100
   wordBank: []
