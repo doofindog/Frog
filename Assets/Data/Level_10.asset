@@ -37,7 +37,7 @@ MonoBehaviour:
   - defaultSentence:
     - Fred
     - loves
-    - sunglight
+    - sunlight
     draggableMask: 010000
   - defaultSentence:
     - Fred
