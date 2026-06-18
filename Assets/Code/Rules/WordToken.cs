@@ -8,7 +8,10 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 {
     [SerializeField] private TMP_Text label;
     [SerializeField] private Image bg;
- 
+    [SerializeField] private Color staticTextColor = new Color(0.78f, 0.74f, 0.66f);
+    [SerializeField] private Color draggableTextColor = new Color(0.18f, 0.14f, 0.1f);
+    [SerializeField] private UIHoverScalePunch hoverScalePunch;
+
     public string Text => label != null ? label.text : string.Empty;
     public bool Draggable => _draggable;
 
@@ -23,13 +26,20 @@ public class WordToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+        if (hoverScalePunch == null) hoverScalePunch = GetComponent<UIHoverScalePunch>();
     }
 
     public void Init(string text, RuleBook ruleBook, bool draggable = true)
     {
-        if (label != null) label.text = text;
+        if (label != null)
+        {
+            label.text = text;
+            label.color = draggable ? draggableTextColor : staticTextColor;
+        }
         _ruleBook = ruleBook;
         _draggable = draggable;
+
+        if (hoverScalePunch != null) hoverScalePunch.enabled = draggable;
 
         if (bg != null && !draggable)
         {
