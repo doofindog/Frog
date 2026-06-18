@@ -18,14 +18,15 @@ MonoBehaviour:
   - {fileID: 6863103084244101862, guid: ddc739ed4b1bbe741b2f56bae3d591c3, type: 3}
   - {fileID: 6863103084244101862, guid: e793a28ede14afd499c21c73dbf8725c, type: 3}
   dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: 607078c5e0a0d2748a643d61e51e2766, type: 3}
-  winConditions: []
   sentences:
   - defaultSentence:
     - Kevin
     - hates
-    - pink frogs
+    - Pink Frogs
+    draggableMask: 000101
   - defaultSentence:
     - Kevin
     - Likes
     - Fred
+    draggableMask: 010101
   wordBank: []

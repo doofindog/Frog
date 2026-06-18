@@ -15,23 +15,26 @@ MonoBehaviour:
   customerPrefabs:
   - {fileID: 6863103084244101862, guid: ddc739ed4b1bbe741b2f56bae3d591c3, type: 3}
   - {fileID: 6863103084244101862, guid: e793a28ede14afd499c21c73dbf8725c, type: 3}
-  dropZoneLayoutPrefab: {fileID: 3065236647449301241, guid: 359290f004bf0b14ab463732433b9b27, type: 3}
-  winConditions: []
+  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: 359290f004bf0b14ab463732433b9b27, type: 3}
   sentences:
   - defaultSentence:
     - Kevin
     - hates
     - pink frogs
+    draggableMask: 000101
   - defaultSentence:
     - pink frogs
     - hate
     - Fred
+    draggableMask: 000001
   - defaultSentence:
     - Fred
     - loves
     - kevin
+    draggableMask: 000100
   - defaultSentence:
     - Fred
     - hates
     - pink frogs
+    draggableMask: 000100
   wordBank: []

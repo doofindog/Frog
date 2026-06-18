@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3477db2c84c0ff54686944cb7b77f107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerMoodController
-  levelLoader: {fileID: 1856758957}
+  ruleBook: {fileID: 0}
 --- !u!4 &1264291019
 Transform:
   m_ObjectHideFlags: 0
@@ -993,8 +993,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WinLoseEvaluator
   queue: {fileID: 608057539}
-  levelLoader: {fileID: 1856758957}
   grid: {fileID: 0}
+  ruleBook: {fileID: 0}
   onWin:
     m_PersistentCalls:
       m_Calls:
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
-    m_Left: 200
+    m_Left: 60
     m_Right: 20
     m_Top: 200
     m_Bottom: 20
@@ -1420,7 +1420,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   queue: {fileID: 608057539}
-  ruleBook: {fileID: 1393176177}
 --- !u!4 &1879725890
 Transform:
   m_ObjectHideFlags: 0

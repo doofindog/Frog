@@ -9,7 +9,6 @@ public class DragManager : MonoBehaviour
     [SerializeField] private LayerMask draggableLayer;
     [SerializeField] private LayerMask dropZoneLayer;
     [SerializeField] private CustomerQueue queue;
-    [SerializeField] private RuleBook ruleBook;
 
     private Camera _camera;
     private Draggable _dragging;
@@ -43,7 +42,7 @@ public class DragManager : MonoBehaviour
         if (hit == null) return;
 
         _dragging = hit.GetComponent<Draggable>();
-        if (_dragging == null) return;
+        if (_dragging == null || _dragging.IsLocked) { _dragging = null; return; }
 
         Physics2D.OverlapPoint(worldPos, dropZoneLayer)?.GetComponent<DropZone>()?.Vacate();
         queue.TryRemove(_dragging);
@@ -61,12 +60,12 @@ public class DragManager : MonoBehaviour
 
         _hoveredDropZone?.OnDragExit();
         _hoveredDropZone = zone;
-        _hoveredDropZone?.OnDragEnter(_dragging, ruleBook);
+        _hoveredDropZone?.OnDragEnter(_dragging);
     }
 
     private void EndDrag()
     {
-        bool accepted = _hoveredDropZone != null && _hoveredDropZone.TryAccept(_dragging, ruleBook);
+        bool accepted = _hoveredDropZone != null && _hoveredDropZone.TryAccept(_dragging);
 
         _hoveredDropZone?.OnDragExit();
         _hoveredDropZone = null;

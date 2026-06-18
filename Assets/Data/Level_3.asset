@@ -15,19 +15,21 @@ MonoBehaviour:
   customerPrefabs:
   - {fileID: 6863103084244101862, guid: e793a28ede14afd499c21c73dbf8725c, type: 3}
   - {fileID: 6863103084244101862, guid: ddc739ed4b1bbe741b2f56bae3d591c3, type: 3}
-  dropZoneLayoutPrefab: {fileID: 3065236647449301241, guid: ab8a06574b333e342a38207104d448b6, type: 3}
-  winConditions: []
+  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: ab8a06574b333e342a38207104d448b6, type: 3}
   sentences:
   - defaultSentence:
     - Kevin
     - loves
     - sunlight
+    draggableMask: 000101
   - defaultSentence:
     - Kevin
     - loves
     - Fred
+    draggableMask: 010100
   - defaultSentence:
     - Fred
     - hates
-    - kevin
+    - Kevin
+    draggableMask: 000100
   wordBank: []

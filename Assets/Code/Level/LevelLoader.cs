@@ -77,7 +77,7 @@ public class LevelLoader : MonoBehaviour
 
     private void LoadRules(LevelData data)
     {
-        rules ??= FindAnyObjectByType<RuleBook>();
+        if (!rules) rules = FindAnyObjectByType<RuleBook>();
         if (!rules)
         {
             Debug.LogError("No RuleBook found in scene!");

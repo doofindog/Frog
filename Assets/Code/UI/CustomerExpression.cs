@@ -20,6 +20,7 @@ public class CustomerExpression : MonoBehaviour
     private CustomerMood _currentMood = CustomerMood.Neutral;
 
     public string FrogName => _draggable.frogName;
+    public Draggable Draggable => _draggable;
 
     private void Awake()
     {

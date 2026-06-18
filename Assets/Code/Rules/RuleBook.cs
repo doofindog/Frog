@@ -5,14 +5,17 @@ using UnityEngine.UI;
 
 public class RuleBook : MonoBehaviour
 {
+    public static event Action OnRulesChanged;
+
     [SerializeField] private RuleDisplay rulePrefab;
     [SerializeField] private Transform rulesContainer;
     [SerializeField] private Transform bankContainer;
     [SerializeField] private WordToken wordTokenPrefab;
 
     private readonly List<RuleDisplay> _displays = new();
+    private WordToken _hoveredToken;
 
-    public Transform BankContainer => bankContainer;
+    public void NotifyRulesChanged() => OnRulesChanged?.Invoke();
 
     public void LoadRules(SentenceData[] sentences, string[] wordBank)
     {
@@ -51,42 +54,62 @@ public class RuleBook : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(bankContainer.GetComponent<RectTransform>());
     }
 
-    // Returns the RuleDisplay whose sentence area contains screenPos, or null.
-    public RuleDisplay GetDisplayAt(Vector2 screenPos)
+    // Returns the WordToken under screenPos (across all sentence rows and the bank), or null.
+    public WordToken GetTokenAt(Vector2 screenPos)
+    {
+        return FindTokenAt(screenPos);
+    }
+
+    public void UpdateHoverHighlight(Vector2 screenPos)
+    {
+        WordToken token = FindTokenAt(screenPos);
+        if (token == _hoveredToken) return;
+
+        _hoveredToken?.SetHighlighted(false);
+        _hoveredToken = token;
+        _hoveredToken?.SetHighlighted(true);
+    }
+
+    public void ClearHoverHighlight()
+    {
+        _hoveredToken?.SetHighlighted(false);
+        _hoveredToken = null;
+    }
+
+    private WordToken FindTokenAt(Vector2 screenPos)
     {
         Camera cam = GetUICamera();
+
         foreach (var display in _displays)
         {
-            if (RectTransformUtility.RectangleContainsScreenPoint(
-                    (RectTransform)display.SentenceContainer, screenPos, cam))
-                return display;
+            foreach (Transform child in display.SentenceContainer)
+            {
+                if (RectTransformUtility.RectangleContainsScreenPoint((RectTransform)child, screenPos, cam))
+                {
+                    var token = child.GetComponent<WordToken>();
+                    if (token != null && token.Draggable) return token;
+                }
+            }
         }
+
+        foreach (Transform child in bankContainer)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint((RectTransform)child, screenPos, cam))
+            {
+                var token = child.GetComponent<WordToken>();
+                if (token != null && token.Draggable) return token;
+            }
+        }
+
         return null;
     }
 
-    // Each display handles its own "am I being hovered?" check internally.
-    public void UpdateGapIndicators(Vector2 screenPos)
+    public List<RuleConstraint> GetAllConstraints()
     {
+        var result = new List<RuleConstraint>();
         foreach (var display in _displays)
-            display.UpdateGapIndicator(screenPos);
-    }
-
-    public void HideAllGapIndicators()
-    {
-        foreach (var display in _displays)
-            display.HideGapIndicator();
-    }
-
-    public RuleConstraint GetConstraintForFrog(string frogName)
-    {
-        if (_displays.Count == 0) return null;
-
-        foreach (var display in _displays)
-            foreach (var constraint in display.GetCurrentConstraints())
-                if (string.Equals(constraint.subjectFrog, frogName, StringComparison.OrdinalIgnoreCase))
-                    return constraint;
-
-        return new RuleConstraint { blockedEverywhere = true };
+            result.AddRange(display.GetCurrentConstraints());
+        return result;
     }
 
     private Camera GetUICamera()
