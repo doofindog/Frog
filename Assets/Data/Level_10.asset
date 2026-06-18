@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
   - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
   - {fileID: 6863103084244101862, guid: ddc739ed4b1bbe741b2f56bae3d591c3, type: 3}
-  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: 359290f004bf0b14ab463732433b9b27, type: 3}
+  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: ab6b5baea27200c44a798e901c6caf5d, type: 3}
   sentences:
   - defaultSentence:
     - Pink Frogs

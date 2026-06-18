@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 6863103084244101862, guid: e793a28ede14afd499c21c73dbf8725c, type: 3}
   - {fileID: 6863103084244101862, guid: 4a8eb7227e7511140b1c36ac165c9d32, type: 3}
   - {fileID: 6863103084244101862, guid: ddc739ed4b1bbe741b2f56bae3d591c3, type: 3}
-  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: 359290f004bf0b14ab463732433b9b27, type: 3}
+  dropZoneLayoutPrefab: {fileID: 8697038547754579527, guid: 40305d38761dc2c4ca4c3acc77537320, type: 3}
   sentences:
   - defaultSentence:
     - Chloe

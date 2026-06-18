@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level_8
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   customerPrefabs:
-  - {fileID: 6863103084244101862, guid: ddc739ed4b1bbe741b2f56bae3d591c3, type: 3}
+  - {fileID: 6863103084244101862, guid: e793a28ede14afd499c21c73dbf8725c, type: 3}
   - {fileID: 6863103084244101862, guid: e178f1cee0e15a34abfa4c1efaed7cc6, type: 3}
   - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
   - {fileID: 6863103084244101862, guid: 7916274ad7646ab43b94f6bf7debfc21, type: 3}
